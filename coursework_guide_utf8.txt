@@ -1,0 +1,80 @@
+University of Wolverhampton
+Faculty of Science and Engineering
+Department of Mathematics and Computer Science
+Module Assessment
+Module
+6CC001 – Advanced Web Technologies
+Module Leader
+Alix Bergeret
+Semester 
+2
+Year
+2025-2026
+Assessment 1
+Coursework
+% Of Module Mark
+50%
+Due Date
+28th March 2025
+Hand-in – what?
+Web Application & Version Control Logs
+Hand-in – where?
+Canvas / Student Server
+Feedback 
+Face to face demonstration
+Learning outcomes assessed
+LO1, LO2
+Method of retrieval
+Improvement to existing work and demonstration
+Assessment 2
+Examination
+% Of Module Mark
+50%
+Due Date
+Assessment Weeks (exact date TBC)
+Feedback
+Provisional grades will be uploaded to Canvas within 4 weeks
+Learning outcomes assessed
+LO1
+Method of retrieval
+Resit Examination
+Pass mark 
+40% Grade required on BOTH assessments to pass the module.
+Module Learning Outcomes
+LO1 – Compare and evaluate a range of modern web development technologies and methodologies.
+LO2 – Construct a web application using an appropriate architectural pattern and suitable technologies.
+Assessment 1: Website Creation
+The Task
+You are required to build a website featuring the technologies taught in the lectures.
+The topic of your site can be any of your choosing. Pick something you have an active interest in, a hobby, a sport you play, a group or club you belong to etc. Once you have selected your topic YOU MUST CONFIRM THIS WITH YOUR TUTOR. You will not be allowed to proceed with your topic of choice without tutor agreement. You are not allowed to change your topic without further consultation with your tutor.
+You must have permission or abide by Creative commons license for any assets such as images and videos that you use.
+Requirements
+You are required to build a dynamic website that features the functionalities listed in the marking rubric on Canvas. 
+Key principles and technologies required will be covered in the lectures.
+Guidance on Tools and Technologies
+Your website MUST be hosted on the student server (mi-linux.wlv.ac.uk). You should develop it using the server-side scripting language PHP. Your data should be stored in a MySQL database, also available on mi-linux.wlv.ac.uk.
+You may use any coding tools/environments you like, including:
+All PHP frameworks (CodeIgniter, Laravel, Cake etc.)
+All IDEs & Text Editors (VS Code, PhpStorm, Eclipse etc.)
+All JavaScript Libraries and frameworks (React, Vue, jQuery, Angular, etc.)
+All CSS frameworks (Foundation, Bootstrap etc.)
+You are however not allowed to create your website using a Content Management System (CMS) such as WordPress.
+Do not hesitate to discuss this matter with a workshop tutor if you have any doubts.
+Documentation
+No documentation is required for this task.
+How to Submit
+Your website must be published on mi-linux.wlv.ac.uk by the assessment deadline (as explained in lecture sessions). You should also upload a zip file containing your code and other assets to Canvas, alongside your version control logs.
+The Demonstration
+You must attend and demonstrate your website during your workshops in weeks 11 or 12 alongside a tutor. This demonstration is your opportunity to highlight the best areas of your work, and to answer any questions that the workshop tutor might have. You will be given feedback on your assessment during this demonstration.
+The lecturer will also use this session to assess whether the work presented was created by the student:
+Technical questions about the work will be asked.
+Attendance records will be consulted.
+Git commit logs will be checked.
+If the points above are not satisfied, a grade of 0 will be awarded.
+Important: You only get one chance to present.
+A booking system will be provided. It is your responsibility to have booked an appointment to demonstrate your work.
+Failure to present your work will result in a grade of 0 NS (FAIL) for the assessment.
+Assessment 2: Examination
+You will be required to sit a 2-hour examination during the assessment weeks. The examination will consist of several written questions. These will be based on the content covered during lectures, therefore, it is important that you revise all the associated material.
+Failure to attend this examination will result in a grade of 0 NS (FAIL).
+You must pass both assessments (coursework and exam) to pass the module.
