@@ -52,10 +52,7 @@
                     <button class="btn btn-success btn-lg w-100 rounded-pill fw-bold" disabled>Already Enrolled</button>
                     <a href="{% url 'dashboard' %}" class="btn btn-link text-decoration-none mt-2 d-block">Go to Dashboard</a>
                 {% else %}
-                    <form method="post" action="{% url 'enroll_course' course.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow">Enroll Now</button>
-                    </form>
+                    <a href="{% url 'checkout' course.id %}" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow">Enroll Now</a>
                 {% endif %}
             </div>
             <div class="card-footer bg-light border-0 p-4 text-muted text-center small">

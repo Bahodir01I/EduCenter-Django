@@ -48,6 +48,20 @@ def course_detail(request, pk):
     return render(request, 'courses/course_detail.html', context)
 
 @login_required
+def checkout(request, pk):
+    course = get_object_or_404(Course, pk=pk)
+    if request.user.role != 'student':
+        messages.error(request, "Only students can enroll in courses.")
+        return redirect('course_detail', pk=pk)
+        
+    enrolled = Enrollment.objects.filter(student=request.user, course=course).exists()
+    if enrolled:
+        messages.info(request, "You are already enrolled in this course.")
+        return redirect('dashboard')
+        
+    return render(request, 'courses/checkout.html', {'course': course})
+
+@login_required
 def enroll_course(request, pk):
     if request.user.role != 'student':
         messages.error(request, "Only students can enroll in courses.")
