@@ -3,7 +3,10 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-8">
-        <div class="card shadow-sm border-0 bg-white mb-4">
+        <div class="card shadow-sm border-0 bg-white mb-4 overflow-hidden">
+            {% if course.image %}
+                <img src="{{ course.image.url }}" class="card-img-top w-100" alt="{{ course.title }}" style="max-height: 400px; object-fit: cover;">
+            {% endif %}
             <div class="card-body p-5">
                 <span class="badge bg-primary text-light rounded-pill px-3 py-2 mb-3">{{ course.category.name|default:"Uncategorized" }}</span>
                 <h1 class="fw-bold text-dark mb-3">{{ course.title }}</h1>

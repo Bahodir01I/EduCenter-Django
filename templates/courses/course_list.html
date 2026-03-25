@@ -42,7 +42,14 @@
         <div class="row g-4">
             {% for course in page_obj %}
             <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 bg-white course-card">
+                <div class="card h-100 shadow-sm border-0 bg-white course-card overflow-hidden">
+                    {% if course.image %}
+                        <img src="{{ course.image.url }}" class="card-img-top w-100" alt="{{ course.title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center text-muted w-100" style="height: 200px;">
+                            <i class="bi bi-image" style="font-size: 3rem;"></i>
+                        </div>
+                    {% endif %}
                     <div class="card-body p-4 d-flex flex-column">
                         <span class="badge bg-light text-primary border border-primary rounded-pill px-3 py-2 mb-3 align-self-start">{{ course.category.name|default:"Uncategorized" }}</span>
                         <h5 class="card-title fw-bold mb-2">{{ course.title }}</h5>

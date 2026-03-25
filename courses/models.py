@@ -29,6 +29,7 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     duration = models.IntegerField(help_text="Duration in weeks", default=4)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default='beginner')
+    image = models.ImageField(upload_to='course_images/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
