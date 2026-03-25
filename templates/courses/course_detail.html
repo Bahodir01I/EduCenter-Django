@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}{{ course.title }} - EduCenter{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 bg-white mb-4">
+            <div class="card-body p-5">
+                <span class="badge bg-primary text-light rounded-pill px-3 py-2 mb-3">{{ course.category.name|default:"Uncategorized" }}</span>
+                <h1 class="fw-bold text-dark mb-3">{{ course.title }}</h1>
+                <p class="text-muted fs-5 mb-4">{{ course.description }}</p>
+                
+                <h5 class="fw-bold mb-3">Course Details</h5>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item px-0"><i class="bi bi-person text-primary me-2"></i> <strong>Instructor:</strong> {{ course.instructor.get_full_name|default:course.instructor.username }}</li>
+                    <li class="list-group-item px-0"><i class="bi bi-clock text-primary me-2"></i> <strong>Duration:</strong> {{ course.duration }} weeks</li>
+                    <li class="list-group-item px-0"><i class="bi bi-bar-chart text-primary me-2"></i> <strong>Level:</strong> {{ course.get_level_display }}</li>
+                </ul>
+                
+                <h5 class="fw-bold mb-3 mt-5">Reviews</h5>
+                {% if course.reviews.exists %}
+                    {% for review in course.reviews.all %}
+                        <div class="border-bottom py-3">
+                            <div class="d-flex justify-content-between">
+                                <span class="fw-bold">{{ review.student.username }}</span>
+                                <span class="text-warning">
+                                    {% for i in "12345"|make_list %}
+                                        {% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}
+                                    {% endfor %}
+                                </span>
+                            </div>
+                            <p class="text-muted mb-0 mt-2">{{ review.comment }}</p>
+                            <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">No reviews yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card shadow border-primary bg-white sticky-top" style="top: 2rem;">
+            <div class="card-body p-4 text-center">
+                <h2 class="fw-bold text-primary mb-4">${{ course.price }}</h2>
+                {% if not user.is_authenticated %}
+                    <p class="text-muted mb-4">You must be logged in to enroll.</p>
+                    <a href="{% url 'login' %}?next={% url 'course_detail' course.id %}" class="btn btn-outline-primary btn-lg w-100 rounded-pill fw-bold">Login to Enroll</a>
+                {% elif user.role != 'student' %}
+                    <div class="alert alert-info">Only student accounts can enroll in courses.</div>
+                {% elif enrolled %}
+                    <button class="btn btn-success btn-lg w-100 rounded-pill fw-bold" disabled>Already Enrolled</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-link text-decoration-none mt-2 d-block">Go to Dashboard</a>
+                {% else %}
+                    <form method="post" action="{% url 'enroll_course' course.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow">Enroll Now</button>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="card-footer bg-light border-0 p-4 text-muted text-center small">
+                30-Day Money-Back Guarantee<br>Full Lifetime Access
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

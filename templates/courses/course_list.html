@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Course Catalog - EduCenter{% endblock %}
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <h2 class="text-primary fw-bold">Explore Our Courses</h2>
+        <p class="text-muted">Find the right course to advance your skills.</p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Sidebar for filtering/search -->
+    <div class="col-lg-3 col-md-4 mb-4">
+        <div class="card shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-bold text-dark mb-4"><i class="bi bi-funnel"></i> Filter Courses</h5>
+                <form method="get" action="{% url 'course_list' %}">
+                    <div class="mb-4">
+                        <label class="form-label text-muted fw-bold">Search</label>
+                        <input type="text" name="q" class="form-control rounded-pill" value="{{ query }}" placeholder="Keyword or Instructor...">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-muted fw-bold">Category</label>
+                        <select name="category" class="form-select rounded-pill">
+                            <option value="">All Categories</option>
+                            {% for c in categories %}
+                                <option value="{{ c.id }}" {% if current_category == c.id|stringformat:"i" %}selected{% endif %}>{{ c.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold">Apply Filters</button>
+                    {% if query or current_category %}
+                        <a href="{% url 'course_list' %}" class="btn btn-outline-secondary w-100 mt-2 rounded-pill">Clear</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Course Grid -->
+    <div class="col-lg-9 col-md-8">
+        <div class="row g-4">
+            {% for course in page_obj %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0 bg-white course-card">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-light text-primary border border-primary rounded-pill px-3 py-2 mb-3 align-self-start">{{ course.category.name|default:"Uncategorized" }}</span>
+                        <h5 class="card-title fw-bold mb-2">{{ course.title }}</h5>
+                        <p class="text-muted small mb-3">By {{ course.instructor.get_full_name|default:course.instructor.username }}</p>
+                        <p class="card-text text-muted mb-4">{{ course.description|truncatewords:15 }}</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="fw-bold fs-5 text-dark">${{ course.price }}</span>
+                            <a href="{% url 'course_detail' course.id %}" class="btn btn-outline-primary btn-sm rounded-pill fw-bold px-3">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted fs-5">No courses found matching your criteria.</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <nav aria-label="Course pagination" class="mt-5">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link rounded-pill px-3 mx-1" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if current_category %}&category={{ current_category }}{% endif %}">Previous</a></li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><span class="page-link rounded-pill px-3 mx-1">{{ num }}</span></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link rounded-pill px-3 mx-1" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}{% if current_category %}&category={{ current_category }}{% endif %}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link rounded-pill px-3 mx-1" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if current_category %}&category={{ current_category }}{% endif %}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+<style>
+    .course-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+</style>
+{% endblock %}

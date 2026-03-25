@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - EduCenter{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+    <h2 class="text-primary fw-bold m-0">Your Dashboard</h2>
+    <span class="badge bg-primary fs-6 py-2 px-3 rounded-pill text-uppercase">{{ user.get_role_display }}</span>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100 bg-white">
+            <div class="card-body p-4 text-center">
+                <div class="display-1 text-primary mb-3">
+                    👤
+                </div>
+                <h4 class="fw-bold">{{ user.get_full_name|default:user.username }}</h4>
+                <p class="text-muted mb-1">{{ user.email }}</p>
+                <p class="text-muted mb-0">Role: <span class="fw-bold text-dark">{{ user.get_role_display }}</span></p>
+            </div>
+            <div class="card-footer bg-light border-0 text-center p-3">
+                <a href="#" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 h-100 bg-white">
+            <div class="card-header bg-white border-bottom py-3">
+                <h5 class="fw-bold m-0 text-dark">Your Activity</h5>
+            </div>
+            <div class="card-body p-4">
+                {% if user.role == 'student' %}
+                    <h6 class="text-muted text-uppercase fw-bold mb-3">Enrolled Courses</h6>
+                    {% if user.enrollments.exists %}
+                        <div class="list-group list-group-flush">
+                            {% for enrollment in user.enrollments.all %}
+                                <div class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">
+                                            <a href="{% url 'course_detail' enrollment.course.id %}" class="text-decoration-none">{{ enrollment.course.title }}</a>
+                                        </h6>
+                                        <small class="text-muted">Enrolled on {{ enrollment.enrollment_date|date:"M d, Y" }}</small>
+                                    </div>
+                                    <span class="badge {% if enrollment.status == 'active' %}bg-success{% else %}bg-secondary{% endif %} rounded-pill py-2 px-3">
+                                        {{ enrollment.get_status_display }}
+                                    </span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <p class="text-muted mb-3 fs-5">You haven't enrolled in any courses yet.</p>
+                            <a href="{% url 'course_list' %}" class="btn btn-primary rounded-pill fw-bold px-4 py-2 shadow-sm">Explore Our Courses</a>
+                        </div>
+                    {% endif %}
+                {% elif user.role == 'instructor' %}
+                    <h6 class="text-muted text-uppercase fw-bold mb-3">Your Taught Courses</h6>
+                    <!-- Instructor course list logic will go here -->
+                {% elif user.role == 'admin' %}
+                    <h6 class="text-muted text-uppercase fw-bold mb-3">System Overview</h6>
+                    <div class="row text-center mt-4">
+                        <div class="col-4">
+                            <h2 class="text-primary fw-bold">{{ student_count|default:"0" }}</h2>
+                            <span class="text-muted">Students</span>
+                        </div>
+                        <div class="col-4">
+                            <h2 class="text-primary fw-bold">{{ course_count|default:"0" }}</h2>
+                            <span class="text-muted">Courses</span>
+                        </div>
+                        <div class="col-4">
+                            <h2 class="text-primary fw-bold">{{ enrollment_count|default:"0" }}</h2>
+                            <span class="text-muted">Enrollments</span>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                       <a href="/admin/" class="btn btn-primary rounded-pill fw-bold px-4">Go to Full Admin Panel</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

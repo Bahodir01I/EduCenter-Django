@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to EduCenter{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <div class="container-fluid py-5 text-center">
+        <h1 class="display-4 fw-bold text-primary">Master Your Skills with EduCenter</h1>
+        <p class="col-md-8 mx-auto fs-4 text-muted mt-3">
+            Join thousands of students learning advanced techniques in web development, programming, and design.
+        </p>
+        <div class="mt-5">
+            <a href="{% url 'course_list' %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow">Explore Courses</a>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg px-5 py-3 ms-2 rounded-pill fw-bold">Sign Up for Free</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 text-center g-4">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <h3 class="card-title text-primary mb-3">Expert Instructors</h3>
+                <p class="card-text text-muted">Learn directly from university academics and industry experts.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <h3 class="card-title text-primary mb-3">Modern Technologies</h3>
+                <p class="card-text text-muted">Stay up to date with the latest advanced web frameworks like Django and React.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <h3 class="card-title text-primary mb-3">Interactive Learning</h3>
+                <p class="card-text text-muted">Engage with dynamic content, coursework projects, and hands-on exercises.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

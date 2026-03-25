@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up - EduCenter{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 col-lg-6">
+        <div class="card shadow border-0 bg-white rounded-4">
+            <div class="card-body p-5">
+                <h2 class="card-title text-center text-primary fw-bold mb-2">Join EduCenter</h2>
+                <p class="text-center text-muted mb-4">Create your account to start learning</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <div class="form-text text-muted small mt-1">{{ field.help_text|safe }}</div>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="text-danger small fw-bold mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 rounded-pill fw-bold shadow-sm">Create Account</button>
+                </form>
+                <div class="text-center mt-4 pt-4 border-top">
+                    <span class="text-muted">Already have an account? <a href="{% url 'login' %}" class="text-primary fw-bold text-decoration-none">Login</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    input[type="text"], input[type="password"], input[type="email"] {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.5rem;
+        background-color: #f8f9fa;
+    }
+    input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+    }
+    ul.errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+        color: #dc3545;
+        font-size: 0.875em;
+    }
+</style>
+{% endblock %}
