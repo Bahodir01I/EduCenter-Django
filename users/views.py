@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
-from .forms import StudentSignUpForm
+from .forms import StudentSignUpForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
 
 def home(request):
@@ -32,3 +32,15 @@ def dashboard(request):
         context['course_count'] = Course.objects.count()
         context['enrollment_count'] = Enrollment.objects.count()
     return render(request, 'users/dashboard.html', context)
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('dashboard')
+    else:
+        form = UserUpdateForm(instance=request.user)
+    return render(request, 'users/edit_profile.html', {'form': form})

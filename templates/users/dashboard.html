@@ -10,15 +10,19 @@
     <div class="col-md-4">
         <div class="card shadow-sm border-0 h-100 bg-white">
             <div class="card-body p-4 text-center">
-                <div class="display-1 text-primary mb-3">
-                    👤
-                </div>
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" class="rounded-circle mb-3 border border-3 border-light shadow" style="width: 120px; height: 120px; object-fit: cover;" alt="Profile Picture">
+                {% else %}
+                    <div class="rounded-circle bg-light text-secondary d-flex align-items-center justify-content-center mx-auto mb-3 shadow-sm border" style="width: 120px; height: 120px;">
+                        <i class="bi bi-person-fill" style="font-size: 4rem;"></i>
+                    </div>
+                {% endif %}
                 <h4 class="fw-bold">{{ user.get_full_name|default:user.username }}</h4>
                 <p class="text-muted mb-1">{{ user.email }}</p>
                 <p class="text-muted mb-0">Role: <span class="fw-bold text-dark">{{ user.get_role_display }}</span></p>
             </div>
             <div class="card-footer bg-light border-0 text-center p-3">
-                <a href="#" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">Edit Profile</a>
+                <a href="{% url 'edit_profile' %}" class="btn btn-outline-primary rounded-pill btn-sm fw-bold px-4">Edit Profile</a>
             </div>
         </div>
     </div>

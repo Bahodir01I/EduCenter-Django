@@ -8,6 +8,7 @@ class User(AbstractUser):
         ('instructor', 'Instructor'),
     )
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='student')
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 
 class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
