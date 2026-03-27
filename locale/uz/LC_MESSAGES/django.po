@@ -1,0 +1,154 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Welcome to EduCenter"
+msgstr "EduCenter'ga xush kelibsiz"
+
+msgid "Master Your Skills with EduCenter"
+msgstr "EduCenter bilan malakangizni oshiring"
+
+msgid ""
+"Join thousands of students learning advanced techniques in web development, "
+"programming, and design."
+msgstr ""
+"Veb-dasturlash, dasturlash va dizayn bo'yicha ilg'or usullarni o'rganayotgan"
+" minglab talabalarga qo'shiling."
+
+msgid "Explore Courses"
+msgstr "Kurslarni ko'rish"
+
+msgid "Sign Up for Free"
+msgstr "Bepul ro'yxatdan o'tish"
+
+msgid "Expert Instructors"
+msgstr "Malakali o'qituvchilar"
+
+msgid "Learn directly from university academics and industry experts."
+msgstr ""
+"To'g'ridan-to'g'ri universitet akademiklari va soha mutaxassislaridan "
+"o'rganing."
+
+msgid "Modern Technologies"
+msgstr "Zamonaviy texnologiyalar"
+
+msgid ""
+"Stay up to date with the latest advanced web frameworks like Django and "
+"React."
+msgstr ""
+"Django va React kabi eng so'nggi ilg'or veb-freymvorklar bilan hamqadam "
+"bo'ling."
+
+msgid "Interactive Learning"
+msgstr "Interaktiv ta'lim"
+
+msgid ""
+"Engage with dynamic content, coursework projects, and hands-on exercises."
+msgstr ""
+"Dinamik kontent, kurs loyihalari va amaliy mashg'ulotlar bilan "
+"shug'ullaning."
+
+msgid "Browse Courses"
+msgstr "Kurslarni izlash"
+
+msgid "Language"
+msgstr "Til"
+
+msgid "Hello,"
+msgstr "Salom,"
+
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Login"
+msgstr "Tizimga kirish"
+
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Welcome Back"
+msgstr "Xush kelibsiz"
+
+msgid "Ready to level up,"
+msgstr "Bilimingizni oshirishga tayyormisiz,"
+
+msgid ""
+"Dive back into your studies. Discover new advanced courses, or continue "
+"mastering your current skills."
+msgstr ""
+"O'qishga qayting. Yangi ilg'or kurslarni kashf eting yoki joriy malakangizni"
+" oshirishda davom eting."
+
+msgid "My Dashboard"
+msgstr "Mening panelim"
+
+msgid "Why Choose EduCenter?"
+msgstr "Nima uchun EduCenter?"
+
+msgid "About Us"
+msgstr "Biz haqimizda"
+
+msgid "Courses"
+msgstr "Kurslar"
+
+msgid "Contact"
+msgstr "Aloqa"
+
+msgid "Contact Us"
+msgstr "Biz bilan bog'lanish"
+
+msgid "Tashkent, Uzbekistan"
+msgstr "Toshkent, O'zbekiston"
+
+msgid "All rights reserved."
+msgstr "Barcha huquqlar himoyalangan."
+
+msgid "What Our Students Say"
+msgstr "Talabalarimiz nima deydi"
+
+msgid ""
+"The Python course was amazing! The practical projects really helped me build"
+" a strong portfolio and land my first developer job."
+msgstr ""
+"Python kursi ajoyib edi! Amaliy loyihalar menga kuchli portfolio yaratishda "
+"va birinchi ishimni topishda juda yordam berdi."
+
+msgid ""
+"Very clear explanations and the instructors are extremely responsive. I "
+"highly recommend EduCenter to everyone!"
+msgstr ""
+"Juda aniq tushuntirishlar va o'qituvchilar doim yordamga tayyor. Men hammani"
+" EduCenter'ni tanlashga chaqiraman!"
+
+msgid ""
+"Learning React here was a breeze. The interactive exercises make a huge "
+"difference compared to just watching video lectures."
+msgstr ""
+"Bu yerda React'ni o'rganish juda oson kechdi. Interaktiv mashqlar faqat "
+"video ko'rishdan ko'ra katta farq qiladi."
+
+msgid ""
+"EduCenter is the best platform I've used. The material is very up-to-date "
+"with current industry standards."
+msgstr ""
+"EduCenter men foydalangan eng yaxshi platforma. O'quv materiallari hozirgi "
+"bozor standartlariga juda mos keladi."
+
+msgid ""
+"Master advanced techniques in web development, programming, and design with "
+"industry experts."
+msgstr ""
+"Veb dasturlash, dasturlash va dizayn bo'yicha ilg'or usullarni soha "
+"mutaxassislari bilan o'zlashtiring."

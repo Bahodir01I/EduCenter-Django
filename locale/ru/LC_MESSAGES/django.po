@@ -1,0 +1,152 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Welcome to EduCenter"
+msgstr "Добро пожаловать в EduCenter"
+
+msgid "Master Your Skills with EduCenter"
+msgstr "Улучшайте свои навыки с EduCenter"
+
+msgid ""
+"Join thousands of students learning advanced techniques in web development, "
+"programming, and design."
+msgstr ""
+"Присоединяйтесь к тысячам студентов, изучающих передовые методы веб-"
+"разработки, программирования и дизайна."
+
+msgid "Explore Courses"
+msgstr "Изучить курсы"
+
+msgid "Sign Up for Free"
+msgstr "Зарегистрироваться бесплатно"
+
+msgid "Expert Instructors"
+msgstr "Опытные преподаватели"
+
+msgid "Learn directly from university academics and industry experts."
+msgstr ""
+"Учитесь напрямую у университетских преподавателей и экспертов отрасли."
+
+msgid "Modern Technologies"
+msgstr "Современные технологии"
+
+msgid ""
+"Stay up to date with the latest advanced web frameworks like Django and "
+"React."
+msgstr ""
+"Будьте в курсе новейших передовых веб-фреймворков, таких как Django и React."
+
+msgid "Interactive Learning"
+msgstr "Интерактивное обучение"
+
+msgid ""
+"Engage with dynamic content, coursework projects, and hands-on exercises."
+msgstr ""
+"Развивайтесь с помощью динамичного контента, курсовых проектов и "
+"практических упражнений."
+
+msgid "Browse Courses"
+msgstr "Поиск курсов"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Hello,"
+msgstr "Привет,"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Sign Up"
+msgstr "Регистрация"
+
+msgid "Welcome Back"
+msgstr "С возвращением"
+
+msgid "Ready to level up,"
+msgstr "Готовы поднять свой уровень,"
+
+msgid ""
+"Dive back into your studies. Discover new advanced courses, or continue "
+"mastering your current skills."
+msgstr ""
+"Возвращайтесь к учебе. Откройте для себя новые продвинутые курсы или "
+"продолжайте оттачивать свои навыки."
+
+msgid "My Dashboard"
+msgstr "Моя панель"
+
+msgid "Why Choose EduCenter?"
+msgstr "Почему выбирают EduCenter?"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "Courses"
+msgstr "Курсы"
+
+msgid "Contact"
+msgstr "Контакты"
+
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+msgid "Tashkent, Uzbekistan"
+msgstr "Ташкент, Узбекистан"
+
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+msgid "What Our Students Say"
+msgstr "Что говорят наши студенты"
+
+msgid ""
+"The Python course was amazing! The practical projects really helped me build"
+" a strong portfolio and land my first developer job."
+msgstr ""
+"Курс Python был потрясающим! Практические проекты действительно помогли мне "
+"собрать сильное портфолио и найти первую работу."
+
+msgid ""
+"Very clear explanations and the instructors are extremely responsive. I "
+"highly recommend EduCenter to everyone!"
+msgstr ""
+"Очень четкие объяснения, и инструкторы всегда на связи. Очень рекомендую "
+"EduCenter всем!"
+
+msgid ""
+"Learning React here was a breeze. The interactive exercises make a huge "
+"difference compared to just watching video lectures."
+msgstr ""
+"Изучать React здесь было одно удовольствие. Интерактивные упражнения – это "
+"огромная разница по сравнению с простым просмотром."
+
+msgid ""
+"EduCenter is the best platform I've used. The material is very up-to-date "
+"with current industry standards."
+msgstr ""
+"EduCenter – лучшая платформа, которую я использовал. Материал очень актуален"
+" и соответствует отраслевым стандартам."
+
+msgid ""
+"Master advanced techniques in web development, programming, and design with "
+"industry experts."
+msgstr ""
+"Осваивайте передовые методы веб-разработки, программирования и дизайна "
+"вместе с экспертами."

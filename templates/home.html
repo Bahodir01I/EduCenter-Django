@@ -1,55 +1,233 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Welcome to EduCenter{% endblock %}
+{% block title %}{% trans "Welcome to EduCenter" %}{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-4 rounded-3 shadow border-0 position-relative" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000'); background-size: cover; background-position: center; min-height: 50vh; overflow: hidden;">
+{% if user.is_authenticated %}
+<!-- Advanced Hero for Logged In Users -->
+<div class="row align-items-center mb-5 bg-white shadow-lg rounded-4 overflow-hidden border-0" style="min-height: 450px;">
+    <div class="col-lg-6 p-5 p-lg-5 order-2 order-lg-1">
+        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-bold letter-spacing-1">{% trans "Welcome Back" %}</span>
+        <h1 class="display-4 fw-bolder text-dark mb-4 lh-base">
+            {% trans "Ready to level up," %} <br>
+            <span class="text-primary">{{ user.username|title }}</span>?
+        </h1>
+        <p class="fs-5 text-secondary mb-4 lh-lg">
+            {% trans "Dive back into your studies. Discover new advanced courses, or continue mastering your current skills." %}
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="{% url 'course_list' %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+                {% trans "Explore Courses" %}
+            </a>
+            <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold text-dark border shadow-sm">
+                {% trans "My Dashboard" %}
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-6 p-0 position-relative h-100 order-1 order-lg-2" style="min-height: 350px;">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200" alt="Students learning" class="w-100 h-100 position-absolute" style="object-fit: cover;">
+        <!-- Soft gradient overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%);"></div>
+    </div>
+</div>
+{% else %}
+<!-- Original Hero for Guests -->
+<div class="p-5 mb-4 rounded-4 shadow-lg border-0 position-relative" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000'); background-size: cover; background-position: center; min-height: 55vh; overflow: hidden;">
     <!-- Dark overlay -->
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 z-index-0"></div>
     
-    <div class="container-fluid py-5 text-center position-relative" style="z-index: 1;">
-        <h1 class="display-3 fw-bolder text-white text-shadow-sm mb-3">Master Your Skills with EduCenter</h1>
+    <div class="container-fluid py-5 text-center position-relative h-100 d-flex flex-column justify-content-center" style="z-index: 1;">
+        <h1 class="display-3 fw-bolder text-white text-shadow-sm mb-3">{% trans "Master Your Skills with EduCenter" %}</h1>
         <p class="col-md-8 mx-auto fs-4 text-light fw-medium mt-3 text-shadow-sm">
-            Join thousands of students learning advanced techniques in web development, programming, and design.
+            {% trans "Join thousands of students learning advanced techniques in web development, programming, and design." %}
         </p>
         <div class="mt-5">
-            <a href="{% url 'course_list' %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg fs-5">Explore Courses</a>
-            {% if not user.is_authenticated %}
-                <a href="{% url 'register' %}" class="btn btn-light btn-lg px-5 py-3 ms-3 rounded-pill fw-bold text-primary shadow-lg border-0 fs-5">Sign Up for Free</a>
-            {% endif %}
+            <a href="{% url 'course_list' %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg fs-5 transition-hover">{% trans "Explore Courses" %}</a>
+            <a href="{% url 'register' %}" class="btn btn-light btn-lg px-5 py-3 ms-3 rounded-pill fw-bold text-primary shadow-lg border-0 fs-5 transition-hover">{% trans "Sign Up for Free" %}</a>
         </div>
     </div>
 </div>
+{% endif %}
 
 <style>
     .text-shadow-sm { text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
     .opacity-50 { opacity: 0.6 !important; }
+    .transition-hover { transition: all 0.3s ease; }
+    .transition-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; }
+    .letter-spacing-1 { letter-spacing: 1px; }
 </style>
 
-<div class="row mt-5 text-center g-4">
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <h3 class="card-title text-primary mb-3">Expert Instructors</h3>
-                <p class="card-text text-muted">Learn directly from university academics and industry experts.</p>
+<!-- Premium Features Section - Clean Layout -->
+<section class="py-5 bg-transparent mb-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark mb-3">{% trans "Why Choose EduCenter?" %}</h2>
+            <div class="mx-auto bg-primary rounded" style="width: 50px; height: 4px;"></div>
+        </div>
+        
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-white transition-hover rounded-4">
+                    <!-- Subtle background top left of card -->
+                    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); pointer-events: none; border-radius: inherit;"></div>
+                    <div class="card-body p-5 position-relative z-index-1">
+                        <div class="mb-4 text-primary bg-primary bg-opacity-10 d-inline-block p-4 rounded-circle shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-video3" viewBox="0 0 16 16">
+                              <path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2Z"/>
+                              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783Q16 12.312 16 12V4a2 2 0 0 0-2-2H2Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="card-title text-dark fw-bold mb-3 mt-2">{% trans "Expert Instructors" %}</h4>
+                        <p class="card-text text-secondary lh-lg fs-6">{% trans "Learn directly from university academics and industry experts." %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-white transition-hover rounded-4">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); pointer-events: none; border-radius: inherit;"></div>
+                    <div class="card-body p-5 position-relative z-index-1">
+                        <div class="mb-4 text-primary bg-primary bg-opacity-10 d-inline-block p-4 rounded-circle shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
+                              <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
+                            </svg>
+                        </div>
+                        <h4 class="card-title text-dark fw-bold mb-3 mt-2">{% trans "Modern Technologies" %}</h4>
+                        <p class="card-text text-secondary lh-lg fs-6">{% trans "Stay up to date with the latest advanced web frameworks like Django and React." %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-white transition-hover rounded-4">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); pointer-events: none; border-radius: inherit;"></div>
+                    <div class="card-body p-5 position-relative z-index-1">
+                        <div class="mb-4 text-primary bg-primary bg-opacity-10 d-inline-block p-4 rounded-circle shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-puzzle" viewBox="0 0 16 16">
+                              <path d="M3.112 3.645A1.5 1.5 0 0 1 4.605 2H7a.5.5 0 0 1 .5.5v.382c0 .113-.046.223-.128.303a.51.51 0 0 0-.153.304.5.5 0 0 0 .5.54q.135-.002.261-.044a.5.5 0 0 0 .34-.482v-.416A1.5 1.5 0 0 0 6.818 2h-2A2.5 2.5 0 0 0 2 4.5v1.812a1.5 1.5 0 0 0 1.944 1.432l.06-.018a.5.5 0 0 1 .552.262q.068.136-.08.286a.5.5 0 0 0-.276.53q.093.414.47.534.135.042.27.042.22 0 .44-.092A1.5 1.5 0 0 0 8 7.5v-2A1.5 1.5 0 0 0 6.5 4h-.5a.5.5 0 0 1-.5-.5V3a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1.5a.5.5 0 0 1-.5.5H1v-1a.5.5 0 0 1 .112-.355Zm.003 8.71a1.5 1.5 0 0 0 1.49 1.645h2.2a1.5 1.5 0 0 0 1.488-1.328l.013-.11a.5.5 0 0 1 .552-.436q.136.015.286.136a.5.5 0 0 0 .53.276q.414-.093.534-.47.042-.135.042-.27 0-.22-.092-.44A1.5 1.5 0 0 0 7.5 10h-2A1.5 1.5 0 0 0 4 11.5v.5a.5.5 0 0 1-.5.5H3a1 1 0 0 0-1 1h1a1 1 0 0 0 1-1v-1.5a.5.5 0 0 1 .5-.5h1v1a.5.5 0 0 1-.112.355Zm8.775-8.71a1.5 1.5 0 0 0-1.49-1.645h-2.2a1.5 1.5 0 0 0-1.488 1.328l-.013.11a.5.5 0 0 1-.552.436q-.136-.015-.286-.136a.5.5 0 0 0-.53-.276q-.414.093-.534.47-.042.135-.042.27 0 .22.092.44A1.5 1.5 0 0 0 8.5 6h2A1.5 1.5 0 0 0 12 4.5v-.5a.5.5 0 0 1 .5-.5h.5a1 1 0 0 0 1-1h-1a1 1 0 0 0-1 1v1.5a.5.5 0 0 1-.5.5h-1v-1a.5.5 0 0 1 .112-.355Zm.003 8.71a1.5 1.5 0 0 1-1.493 1.645h-2.4a1.5 1.5 0 0 1-1.488-1.328l-.013-.11a.5.5 0 0 0-.552-.436q-.136-.015-.286-.136a.5.5 0 0 1-.53.276q-.414.093-.534.47-.042.135-.042.27 0 .22.092.44A1.5 1.5 0 0 1 8.5 10h2A1.5 1.5 0 0 1 12 11.5v.5a.5.5 0 0 0 .5.5h.5a1 1 0 0 1 1-1h-1a1 1 0 0 1-1 1v1.5a.5.5 0 0 0 .5.5h-1v-1a.5.5 0 0 0-.112-.355Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="card-title text-dark fw-bold mb-3 mt-2">{% trans "Interactive Learning" %}</h4>
+                        <p class="card-text text-secondary lh-lg fs-6">{% trans "Engage with dynamic content, coursework projects, and hands-on exercises." %}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <h3 class="card-title text-primary mb-3">Modern Technologies</h3>
-                <p class="card-text text-muted">Stay up to date with the latest advanced web frameworks like Django and React.</p>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-white border-top mb-0" style="overflow-x: hidden;">
+    <div class="container mb-4">
+        <h2 class="display-6 fw-bold text-dark text-center">{% trans "What Our Students Say" %}</h2>
+        <div class="mx-auto bg-primary rounded" style="width: 50px; height: 4px;"></div>
+    </div>
+    
+    <div class="container-fluid px-0">
+        <div class="testimonial-slider position-relative py-4" style="overflow: hidden; white-space: nowrap;">
+            <!-- Repeated twice for seamless animation loop -->
+            <div class="testimonial-track d-inline-flex gap-4 px-3">
+                <!-- Testimonial 1 -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Alisher+N&background=0d6efd&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Alisher N.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "The Python course was amazing! The practical projects really helped me build a strong portfolio and land my first developer job." %}"</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Malika+A&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Malika A.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "Very clear explanations and the instructors are extremely responsive. I highly recommend EduCenter to everyone!" %}"</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Sardor+B&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Sardor B.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ☆</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "Learning React here was a breeze. The interactive exercises make a huge difference compared to just watching video lectures." %}"</p>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Jasur+T&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Jasur T.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "EduCenter is the best platform I've used. The material is very up-to-date with current industry standards." %}"</p>
+                </div>
+                
+                <!-- DUPLICATE FOR SEAMLESS LOOP -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Alisher+N&background=0d6efd&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Alisher N.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "The Python course was amazing! The practical projects really helped me build a strong portfolio and land my first developer job." %}"</p>
+                </div>
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Malika+A&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Malika A.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "Very clear explanations and the instructors are extremely responsive. I highly recommend EduCenter to everyone!" %}"</p>
+                </div>
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Sardor+B&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Sardor B.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ☆</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "Learning React here was a breeze. The interactive exercises make a huge difference compared to just watching video lectures." %}"</p>
+                </div>
+                <div class="card shadow-sm border-0 rounded-4 p-4 testimonial-card bg-light" style="width: 350px; white-space: normal; flex-shrink: 0;">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://ui-avatars.com/api/?name=Jasur+T&background=random&color=fff" class="rounded-circle me-3" width="50" height="50">
+                        <div>
+                            <h6 class="mb-0 fw-bold">Jasur T.</h6>
+                            <small class="text-warning">★ ★ ★ ★ ★</small>
+                        </div>
+                    </div>
+                    <p class="text-secondary small fst-italic">"{% trans "EduCenter is the best platform I've used. The material is very up-to-date with current industry standards." %}"</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <h3 class="card-title text-primary mb-3">Interactive Learning</h3>
-                <p class="card-text text-muted">Engage with dynamic content, coursework projects, and hands-on exercises.</p>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
+
+<style>
+    @keyframes scrollTestimonials {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-350px * 4 - 1.5rem * 4)); }
+    }
+    .testimonial-track {
+        animation: scrollTestimonials 25s linear infinite;
+    }
+    .testimonial-track:hover {
+        animation-play-state: paused;
+    }
+</style>
+
 {% endblock %}

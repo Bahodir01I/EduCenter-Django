@@ -22,6 +22,7 @@ from users.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', home, name='home'),
     path('users/', include('users.urls')),
     path('courses/', include('courses.urls')),
